@@ -1,0 +1,63 @@
+body {
+  background-color: #9FCEE0;
+  color: #312D2E;
+}
+
+.wrap {
+  position: absolute;
+  top:  50%;
+  left: 50%;
+  width:  100vmin;
+  height: 100vmin;
+  margin: -50vmin 0 0 -50vmin;
+}
+
+svg {
+  width:  100%;
+  height: 100%;
+}
+
+polygon, .ttl {
+  opacity: 0;
+  transform: scale(0.8) rotate(-10deg);
+  transform-origin: 25% 25%;
+  animation: poly 1s cubic-bezier(.25,.7,.4,1) forwards;
+}
+
+polygon:nth-of-type(2n) {
+  transform-origin: 75% 75%;
+  animation-duration: 2.5s
+}
+
+.corner {
+  position: absolute;
+  right:  15px;
+  bottom: 15px;
+  opacity: .3
+}
+
+.ttl {
+  position: absolute;
+  top:  61%;
+  left: 30%;
+  font-size: 2vmin;
+  text-align: right;
+  text-shadow: -1px 1px #9FCEE0, 1px 1px #9FCEE0, -1px -1px #9FCEE0, 1px -1px #9FCEE0;
+  animation-delay: 5s;
+}
+
+.bold {
+  font-size: 4vmin;
+  font-weight: 700;
+}
+
+@keyframes poly {
+  0% {transform: scale(0.8) rotate(-10deg); opacity: 0}
+  100% {transform: translate3d(0,0,0); opacity: 1}
+}
+
+@for $i from 1 through 83 {
+  polygon:nth-of-type(#{$i}) {
+    animation-delay: #{(83 - $i) * 50 + 500}ms
+  }
+}
